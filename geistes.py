@@ -325,5 +325,5 @@ def first_surface():
 # ----------------------------------------------------------------------
 
 
-#background_music()
+background_music()
 first_surface()
