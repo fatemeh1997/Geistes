@@ -115,15 +115,15 @@ def show_obj():
 def play():
     answers = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
     InvTime = 10
-    #noResponse = True
     Tfont = font(70)
-    Mfont = font(25)
     cart_list = mix()
     pygame.draw.rect(screen, (141, 219, 205), (880, 50, 100, 150), 0)
     timer = Tfont.render(str(InvTime), True, (255, 0, 0))
     screen.blit(timer, (900, 50))
     pygame.display.flip()
     for i in range(len(cart_list)):
+        pygame.draw.rect(screen, (141, 219, 205), (850, 130, 200, 45), 0)
+        pygame.display.flip()
         if i == 0:
             InvTime = 10
         else:
@@ -149,127 +149,84 @@ def play():
                         if response == answers[cart_list[i] - 1]:
                             InvTime = 10
                             noResponse = False
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Correct Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(True)
                         else:
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Wrong Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(False)
                     if event.key == pygame.K_b:
                         response = 'b'
                         if response == answers[cart_list[i] - 1]:
                             InvTime = 10
                             noResponse = False
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Correct Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(True)
                         else:
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Wrong Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(False)
                     if event.key == pygame.K_c:
                         response = 'c'
                         if response == answers[cart_list[i] - 1]:
                             InvTime = 10
                             noResponse = False
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Correct Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(True)
                         else:
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Wrong Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(False)
                     if event.key == pygame.K_d:
                         response = 'd'
                         if response == answers[cart_list[i] - 1]:
                             InvTime = 10
                             noResponse = False
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Correct Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(True)
                         else:
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Wrong Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(False)
                     if event.key == pygame.K_e:
                         response = 'e'
                         if response == answers[cart_list[i] - 1]:
                             InvTime = 10
                             noResponse = False
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Correct Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(True)
                         else:
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Wrong Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(False)
                     if event.key == pygame.K_f:
                         response = 'f'
                         if response == answers[cart_list[i] - 1]:
                             InvTime = 10
                             noResponse = False
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Correct Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(True)
                         else:
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Wrong Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(False)
                     if event.key == pygame.K_g:
                         response = 'g'
                         if response == answers[cart_list[i] - 1]:
                             InvTime = 10
                             noResponse = False
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Correct Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(True)
                         else:
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Wrong Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(False)
                     if event.key == pygame.K_h:
                         response = 'h'
                         if response == answers[cart_list[i] - 1]:
                             InvTime = 10
                             noResponse = False
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Correct Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(True)
                         else:
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Wrong Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(False)
                     if event.key == pygame.K_i:
                         response = 'i'
                         if response == answers[cart_list[i] - 1]:
                             InvTime = 10
                             noResponse = False
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Correct Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(True)
                         else:
-                            pygame.draw.rect(screen, (141, 219, 205), (850, 140, 100, 70), 0)
-                            pygame.display.flip()
-                            correct = Mfont.render('Wrong Answer', True, (0, 0, 255))
-                            screen.blit(correct, (860, 140))
+                            show_answer_result(False)
+
+
+def show_answer_result(answer):
+    Mfont = font(25)
+    pygame.draw.rect(screen, (141, 219, 205), (850, 130, 200, 45), 0)
+    pygame.display.flip()
+    if answer:
+        correct = Mfont.render('Correct Answer', True, (0, 0, 255))
+    else:
+        correct = Mfont.render('Wrong Answer', True, (0, 0, 255))
+    screen.blit(correct, (860, 140))
 
 
 def first_surface():
