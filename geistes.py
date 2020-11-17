@@ -114,10 +114,8 @@ def show_obj():
 
 def play():
     answers = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i']
-    global InvTime
     InvTime = 10
-    global noResponse
-    noResponse = True
+    #noResponse = True
     Tfont = font(70)
     Mfont = font(25)
     cart_list = mix()
@@ -126,6 +124,11 @@ def play():
     screen.blit(timer, (900, 50))
     pygame.display.flip()
     for i in range(len(cart_list)):
+        if i == 0:
+            InvTime = 10
+        else:
+            InvTime = 11
+        noResponse = True
         cart_name = str(cart_list[i]) + ".jpg"
         cart = pygame.image.load("./images/carts/small/"+cart_name)
         pygame.display.flip()
