@@ -1,6 +1,7 @@
 import pygame
 import random
 import time
+from network import Network
 
 
 class Geistes:
@@ -8,8 +9,11 @@ class Geistes:
         pygame.init()
         self.screenWidth = 1366
         self.screenHeight = 768
-        self.high_scores = []
+        self.high_scores = {}
         self.high_score_index = 0
+        self.net = Network()
+        self.response = ''
+        self.win = False
 
         self.screen = pygame.display.set_mode((self.screenWidth, self.screenHeight))
         pygame.display.set_caption("GEISTES")
@@ -18,14 +22,14 @@ class Geistes:
         myFont = pygame.font.Font('freesansbold.ttf', size)
         return myFont
 
-    def mix(self):
+    """def mix(self):
         mix_carts = []
         for j in range(18):
             number = random.randint(1, 18)
             while number in mix_carts:
                 number = random.randint(1, 18)
             mix_carts.append(number)
-        return mix_carts
+        return mix_carts"""
 
     def background_music(self):
         pygame.mixer.music.load('./music/Danny-Cocke-Afterdark.mp3')
@@ -112,109 +116,124 @@ class Geistes:
 
     def play(self):
         answers = ['e', 'c', 'i', 'b', 'd', 'f', 'a', 'd', 'f', 'a', 'a', 'c', 'c', 'd', 'h', 'f', 'g', 'd']
-        InvTime = 10
+        cart_list = [5, 10, 13, 2, 14, 1, 17, 3, 6, 7, 4, 11, 16, 8, 9, 12, 15, 18]
+        #InvTime = 10
         Tfont = self.font(70)
-        cart_list = self.mix()
-        pygame.draw.rect(self.screen, (141, 219, 205), (880, 50, 100, 150), 0)
+        #cart_list = self.mix()
+        """pygame.draw.rect(self.screen, (141, 219, 205), (880, 50, 100, 150), 0)
         timer = Tfont.render(str(InvTime), True, (255, 0, 0))
         self.screen.blit(timer, (900, 50))
-        pygame.display.flip()
+        pygame.display.flip()"""
         for i in range(len(cart_list)):
-            pygame.draw.rect(self.screen, (141, 219, 205), (850, 130, 200, 45), 0)
+            """pygame.draw.rect(self.screen, (141, 219, 205), (850, 130, 200, 45), 0)
             pygame.display.flip()
             if i == 0:
                 InvTime = 10
             else:
-                InvTime = 11
+                InvTime = 11"""
             noResponse = True
             cart_name = str(cart_list[i]) + ".jpg"
             cart = pygame.image.load("./images/carts/small/"+cart_name)
             pygame.display.flip()
             self.screen.blit(cart, (350, 250))
             pygame.display.flip()
-            while InvTime != 0 and noResponse:
+            while noResponse:
                 time.sleep(1)
-                InvTime -= 1
+                """InvTime -= 1
                 pygame.draw.rect(self.screen, (141, 219, 205), (880, 50, 100, 70), 0)
                 pygame.display.flip()
                 timer2 = Tfont.render(str(InvTime), True, (255, 0, 0))
                 self.screen.blit(timer2, (900, 50))
-                pygame.display.flip()
+                pygame.display.flip()"""
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         if event.key == pygame.K_a:
-                            response = 'a'
-                            if response == answers[cart_list[i] - 1]:
-                                InvTime = 10
+                            self.response = 'a'
+                            if self.response == answers[cart_list[i] - 1]:
+                                self.win = True
+                                #InvTime = 10
                                 noResponse = False
                                 self.show_answer_result(True)
                             else:
                                 self.show_answer_result(False)
                         if event.key == pygame.K_b:
-                            response = 'b'
-                            if response == answers[cart_list[i] - 1]:
-                                InvTime = 10
+                            self.response = 'b'
+                            if self.response == answers[cart_list[i] - 1]:
+                                self.win = True
+                                #InvTime = 10
                                 noResponse = False
                                 self.show_answer_result(True)
                             else:
                                 self.show_answer_result(False)
                         if event.key == pygame.K_c:
-                            response = 'c'
-                            if response == answers[cart_list[i] - 1]:
-                                InvTime = 10
+                            self.response = 'c'
+                            if self.response == answers[cart_list[i] - 1]:
+                                self.win = True
+                                #InvTime = 10
                                 noResponse = False
                                 self.show_answer_result(True)
                             else:
                                 self.show_answer_result(False)
                         if event.key == pygame.K_d:
-                            response = 'd'
-                            if response == answers[cart_list[i] - 1]:
-                                InvTime = 10
+                            self.response = 'd'
+                            if self.response == answers[cart_list[i] - 1]:
+                                self.win = True
+                                #InvTime = 10
                                 noResponse = False
                                 self.show_answer_result(True)
                             else:
                                 self.show_answer_result(False)
                         if event.key == pygame.K_e:
-                            response = 'e'
-                            if response == answers[cart_list[i] - 1]:
-                                InvTime = 10
+                            self.response = 'e'
+                            if self.response == answers[cart_list[i] - 1]:
+                                self.win = True
+                                #InvTime = 10
                                 noResponse = False
                                 self.show_answer_result(True)
                             else:
                                 self.show_answer_result(False)
                         if event.key == pygame.K_f:
-                            response = 'f'
-                            if response == answers[cart_list[i] - 1]:
-                                InvTime = 10
+                            self.response = 'f'
+                            if self.response == answers[cart_list[i] - 1]:
+                                self.win = True
+                                #InvTime = 10
                                 noResponse = False
                                 self.show_answer_result(True)
                             else:
                                 self.show_answer_result(False)
                         if event.key == pygame.K_g:
-                            response = 'g'
-                            if response == answers[cart_list[i] - 1]:
-                                InvTime = 10
+                            self.response = 'g'
+                            if self.response == answers[cart_list[i] - 1]:
+                                self.win = True
+                                #InvTime = 10
                                 noResponse = False
                                 self.show_answer_result(True)
                             else:
                                 self.show_answer_result(False)
                         if event.key == pygame.K_h:
-                            response = 'h'
-                            if response == answers[cart_list[i] - 1]:
-                                InvTime = 10
+                            self.response = 'h'
+                            if self.response == answers[cart_list[i] - 1]:
+                                self.win = True
+                                #InvTime = 10
                                 noResponse = False
                                 self.show_answer_result(True)
                             else:
                                 self.show_answer_result(False)
                         if event.key == pygame.K_i:
-                            response = 'i'
-                            if response == answers[cart_list[i] - 1]:
-                                InvTime = 10
+                            self.response = 'i'
+                            if self.response == answers[cart_list[i] - 1]:
+                                self.win = True
+                                #InvTime = 10
                                 noResponse = False
                                 self.show_answer_result(True)
                             else:
                                 self.show_answer_result(False)
         self.last_surface()
+
+    def send_data(self):
+        data = str(self.net.id) + ":" + self.response + ":" + str(self.win)
+        self.net.send(data)
+        self.win = False
 
     def show_answer_result(self, answer):
         Mfont = self.font(25)
@@ -298,8 +317,6 @@ class Geistes:
                             text_name = text_name[:-1]
                         else:
                             text_name += event.unicode
-                if text_name not in self.high_scores:
-                    self.high_scores.append(text_name)
                 """else:
                     name_txt = fonts.render("This name exists...", True, (229, 223, 69))
                     screen.blit(name_txt, (890, 370))
